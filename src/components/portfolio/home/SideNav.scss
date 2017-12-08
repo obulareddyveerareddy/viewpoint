@@ -1,0 +1,56 @@
+
+.sidenav{
+      background-color: rgba(200, 200, 205, 0.71);
+      height: 100%;
+
+    .avatar {
+      //background-image: url('./../../../assets/img/veera.jpg');
+      width: 150px;
+      height: 150px;
+      background-size: cover;
+      background-position: top center;
+      border-radius: 50%;
+      margin: 2rem;
+    }
+
+    .align{
+      margin-right:2rem;
+      margin-left:2rem;
+    }
+
+    .menu{
+      margin:0px;
+      padding:0px;
+      width:100%;
+      list-style-type: none;
+      cursor: pointer;
+    }
+
+    .menu div{
+      line-height: 4rem;
+      padding-left:2em;
+    }
+
+    .menu div:hover{
+      background-color: #0056b3;
+    }
+
+    .menu div.active{
+      background-color: rgba(0, 123, 255, 0.25);
+    }
+
+    .menu div.active:hover{
+      background-color: #0056b3;
+    }
+
+    .btn{
+      cursor: pointer;
+      border-radius: 0px;
+      background-color: rgba(200, 200, 205, 0.71);
+    }
+
+    .btn:focus{
+      outline: 0;
+      box-shadow: 0;
+    }
+}
