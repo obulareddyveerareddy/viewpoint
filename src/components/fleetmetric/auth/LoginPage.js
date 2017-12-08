@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom'
 
 const LoginForm = () => {
   return(
@@ -15,9 +16,9 @@ const LoginForm = () => {
           </div>
           <div className="m-2">
             <div className="d-flex justify-content-between flex-wrap">
-              <div class="btn-group mt-2">
-                <span class="input-group-addon" id="basic-addon1"><i className="fa fa-google text-danger"  /></span>
-                <button className="btn btn-primary">Google Sign-In</button>
+              <div className="btn-group mt-2">
+                <span className="input-group-addon" id="basic-addon1"><i className="fa fa-google text-danger"  /></span>
+                <a href='/api/auth/google' className="btn btn-primary">Google Sign-In</a>
               </div>
               <div className="btn-group mt-2">
                 <button className="btn btn-default">Cancel</button>
@@ -30,17 +31,23 @@ const LoginForm = () => {
     </div>
   );
 }
+class LoginPage extends React.Component{
+  constructor(props){
+    super(props);
+  }
 
-const LoginPage = () =>{
-  return(
-    <div className="full-height">
-        <div className="d-flex align-items-center" style={{height:'100%'}}>
-          <div className="col-offset-2 col-8" style={{marginLeft: 'auto', marginRight: 'auto'}}>
-            <LoginForm />
+  render(){
+    let {auth} = this.props;
+    return(
+      <div className="full-height">
+          <div className="d-flex align-items-center" style={{height:'100%'}}>
+            <div className="col-offset-2 col-8" style={{marginLeft: 'auto', marginRight: 'auto'}}>
+              <LoginForm />
+            </div>
           </div>
-        </div>
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 export default LoginPage;

@@ -2,7 +2,7 @@ import React    from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
 
 import HomePage from './home/HomePage';
-import LoginPage from './auth/LoginPage';
+import LoginLink from './auth/LoginLink';
 
 class PortfolioRouter extends React.Component{
 
@@ -15,7 +15,7 @@ class PortfolioRouter extends React.Component{
     return(
     <Switch>
       <Route path="/fleetmetric/"     exact   component={HomePage} />
-      <Route path="/fleetmetric/login"     exact   component={LoginPage} />
+      <Route path="/fleetmetric/login"     exact   component={LoginLink} />
     </Switch>
     );
   }

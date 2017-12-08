@@ -18,13 +18,13 @@ app.use(require('webpack-dev-middleware')(compiler, {
 }));
 app.use(require('webpack-hot-middleware')(compiler));
 
+
 app.get('/', function(req, res) {
   console.log('------------------- >>> This is default get route <<< -------------------');
   res.sendFile(path.join( __dirname, '../src/index.html'));
 });
 
-require('./api/FleetOperationsAPI')(app);
-require('./api/UserApi')(app);
+require('./api/AuthRoutes')(app);
 
 
 app.listen(port, function(err) {
