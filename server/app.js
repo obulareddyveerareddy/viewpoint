@@ -25,7 +25,7 @@ app.get('/', function(req, res) {
 });
 
 require('./api/AuthRoutes')(app);
-
+require('./api/FleetMetricRoutes')(app);
 
 app.listen(port, function(err) {
   if (err) {

@@ -18,7 +18,7 @@ const LoginForm = () => {
             <div className="d-flex justify-content-between flex-wrap">
               <div className="btn-group mt-2">
                 <span className="input-group-addon" id="basic-addon1"><i className="fa fa-google text-danger"  /></span>
-                <a href='/api/auth/google' className="btn btn-primary">Google Sign-In</a>
+                <a href='/api/auth/google' className="btn btn-primary">Sign in with Google</a>
               </div>
               <div className="btn-group mt-2">
                 <button className="btn btn-default">Cancel</button>

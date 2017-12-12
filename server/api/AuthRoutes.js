@@ -41,7 +41,6 @@ module.exports = function(app){
      }));
 
   app.use('/api/auth/success', function(req, res){
-    console.log(req.user);
     res.redirect('/#/fleetmetric/');
   })
 

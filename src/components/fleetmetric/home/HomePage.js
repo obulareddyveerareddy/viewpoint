@@ -1,11 +1,20 @@
 import React from 'react';
 
-const HomePage = () =>{
+class HomePage extends React.Component{
+  constructor(props){
+    super(props);
+  }
 
-  return(
-    <h1>Hello FleetMetric</h1>
+  componentWillMount(){
+    this.props.getFleetMetricActiveUser();
+  }
 
-  );
+  render(){
+    return(
+      <div>This is FleetMetric Home Page</div>
+    );
+  }
+
 }
 
 export default HomePage;

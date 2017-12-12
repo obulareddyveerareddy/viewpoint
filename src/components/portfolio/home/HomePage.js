@@ -17,7 +17,7 @@ class HomePage extends React.Component{
 
   render(){
     return(
-      <div id="main" className="d-flex flex-row flex-wrap">
+      <div id="main" className="d-flex flex-row flex-wrap"  style={{height:'100%'}}>
       <nav className="col-sm-2 col-md-2 d-none d-sm-block bg-light sidebar" style={{padding:'0px'}}>
         <SideNav />
       </nav>
