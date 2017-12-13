@@ -9,7 +9,7 @@ module.exports = function(app){
   passport.use(new GoogleStrategy({
     clientID:'1092169932515-86emdthiplvoij4n1gieekep3g4thjv3.apps.googleusercontent.com',
     clientSecret:'N0N6E3yjzDyTuYoxJGzDczIT',
-    callbackURL:'http://localhost:3000/api/auth/google/callback',
+    callbackURL:'https://viewpoint-obulareddyveerareddy.c9users.io/api/auth/google/callback',
     passReqToCallback   : true
   },
   function(req, accessToken, refreshToken, profile, done){
@@ -30,7 +30,7 @@ module.exports = function(app){
 
   app.route('/api/auth/google/callback')
      .get(passport.authenticate('google', {
-       successRedirect:'/api/auth/success',
+       successRedirect:'/api/fleetmetric/active/user',
        failure:'/api/auth/failure'
   }));
 
@@ -41,6 +41,7 @@ module.exports = function(app){
      }));
 
   app.use('/api/auth/success', function(req, res){
+    console.log(req);
     res.redirect('/#/fleetmetric/');
   })
 

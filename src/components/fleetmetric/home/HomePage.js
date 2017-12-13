@@ -5,13 +5,19 @@ class HomePage extends React.Component{
     super(props);
   }
 
-  componentWillMount(){
-    this.props.getFleetMetricActiveUser();
-  }
 
   render(){
+    var {googleOAuth} = this.props;
+    console.log('-------------------------- GoogleOAuth --------------------------');
+    console.log(googleOAuth);
     return(
-      <div>This is FleetMetric Home Page</div>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-offset-3">
+            <h1>Welcome to FleetMetric Homepage</h1>
+          </div>
+        </div>
+      </div>
     );
   }
 

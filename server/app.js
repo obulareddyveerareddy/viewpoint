@@ -5,7 +5,7 @@ import config     from '../webpack.config';
 import bodyParser from 'body-parser';
 import morgan     from 'morgan';
 
-const port     = 3000;
+const port     = 8080;
 const app      = express();
 const compiler = webpack(config);
 

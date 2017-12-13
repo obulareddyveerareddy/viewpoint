@@ -1,9 +1,9 @@
 import * as types from './ActionTypes';
 
-export default function user(state = {}, action){
+export default function googleOAuth(state = {}, action){
     switch(action.type){
-        case types.GET_FLEETMETRIC_ACTIVE_USER:
-            return Object.assign({}, action.user);
+        case types.GOOGLE_OAUTH_PERMISSIONS:
+            return Object.assign({}, action.googleOAuth);
         default:
             return state;
     }

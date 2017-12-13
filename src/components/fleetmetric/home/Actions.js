@@ -1,5 +1,5 @@
 import * as types from './ActionTypes';
 
-export function validateUserLoginDetails(user){
-  return {type:types.GET_FLEETMETRIC_ACTIVE_USER, user};
+export function googleOAuthPermissions(googleOAuth){
+  return {type:types.GOOGLE_OAUTH_PERMISSIONS, googleOAuth};
 };

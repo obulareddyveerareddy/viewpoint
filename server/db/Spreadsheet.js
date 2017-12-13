@@ -21,20 +21,13 @@ class Spreadsheet {
     var oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
     console.log('------------- Check token is stored or not -------------------');
     console.log(oauth2Client);
-    var authUrl = oauth2Client.generateAuthUrl({
-      access_type: 'offline',
-      scope: ['https://www.googleapis.com/auth/spreadsheets.readonly']
-    });
-    console.log('~~~~~~~~~~~~~~~ authUrl '+authUrl);
-    oauth2Client.getToken('code', function(err, token) {
-      if (err) {
-        console.log('Error while trying to retrieve access token', err);
-        return;
-      }
-      console.log('------------ Got token !! --------------');
-      console.log(token);
-    });
 
+    var calendar_auth_url = oauth2Client.generateAuthUrl({
+    access_type: 'offline',
+    scope: 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/calendar'
+    });
+    console.log('~~~~~~~~~~~~~~~ authUrl '+calendar_auth_url);
+    
   }
 
 }
