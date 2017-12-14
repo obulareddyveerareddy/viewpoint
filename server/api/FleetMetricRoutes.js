@@ -19,7 +19,6 @@ module.exports = function(app){
       if(!err){
         console.log(tokens);
       }
-      
     });
     res.redirect('/#/fleetmetric/');
   });

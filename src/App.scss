@@ -1,7 +1,7 @@
 // google fonts
-@import url(http://fonts.googleapis.com/css?family=Ubuntu);
-@import url(http://fonts.googleapis.com/css?family=Tillana);
-@import url(http://fonts.googleapis.com/css?family=Laila);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+@import url(https://fonts.googleapis.com/css?family=Tillana);
+@import url(https://fonts.googleapis.com/css?family=Laila);
 
 
 body, html{
@@ -10,6 +10,11 @@ body, html{
   margin:0px;
   padding:0px;
   font-family:Ubuntu;
+}
+    
+.hide-sidebar{
+    left: -240px;
+    transition: .5s ease-out;
 }
 
 .font-tillana{

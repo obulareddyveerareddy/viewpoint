@@ -44,7 +44,7 @@ const FleetMetricCard = () => {
           <h2>FleetMetric</h2>
           <div>
           <a href="#" target="_blank" className="btn btn-primary rounded-circle m-2"><i className="fa fa-github" /></a>
-          <NavLink href="#" to="/fleetmetric/login" className="btn btn-primary rounded-circle m-2"><i className="fa fa-sign-in" /></NavLink>
+          <NavLink href="#" to="/auth/login" className="btn btn-primary rounded-circle m-2"><i className="fa fa-sign-in" /></NavLink>
           </div>
         </div>
         <h5 className="d-flex justify-content-center">Save your Fleet, Time & Money.</h5>

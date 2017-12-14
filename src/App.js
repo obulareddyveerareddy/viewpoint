@@ -13,6 +13,7 @@ import './App.scss';
 
 import PortfolioRouter            from './components/portfolio/PortfolioRouter';
 import FleetMetricRouter          from './components/fleetmetric/FleetMetricRouter';
+import AuthRouter                 from './components/auth/AuthRouter';
 const store = configureStore();
 
 export default class Main extends Component {
@@ -22,7 +23,8 @@ export default class Main extends Component {
       <MuiThemeProvider>
       <HashRouter>
         <Switch>
-          <Route path="/fleetmetric/**"    component={FleetMetricRouter} />
+          <Route path="/auth/**"          component={AuthRouter} />
+          <Route path="/fleetmetric/**"   component={FleetMetricRouter} />
           <Route path="/"                 component={PortfolioRouter} />
         </Switch>
       </HashRouter>

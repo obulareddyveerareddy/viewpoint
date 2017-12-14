@@ -1,5 +1,5 @@
 import {combineReducers}    from 'redux';
-import auth         from './components/fleetmetric/auth/Reducer';
+import auth         from './components/auth/login/Reducer';
 import googleOAuth  from './components/fleetmetric/home/Reducer';
 
 const rootReducer = combineReducers({

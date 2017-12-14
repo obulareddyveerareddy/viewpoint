@@ -1,0 +1,75 @@
+
+@import url(https://fonts.googleapis.com/css?family=Rubik);
+
+#wrapper{
+    width: 100%;
+    background: #edf1f5;
+    margin: 0;
+    overflow-x: hidden;
+    color: #313131;
+    font-size: 14px;
+    line-height: 1.42857143;
+    
+    .navbar{
+        padding: 0px;
+        color:#ffffff;
+    }
+    
+    .sidebar-toggle{
+        color: #fff;
+        padding: 20px;
+    }
+    
+    .top-left-part{
+        background: #fff;
+        float: left;
+        border-right: 1px solid rgba(0,0,0,.08);
+        padding: 0.5rem 1rem;
+        width: 240px;
+    }
+    
+    .sidebar{
+        background: #ffffff;
+        box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+        color: #313131;
+        font-weight: 300;
+        font-family: Rubik,sans-serif;
+        z-index: 1040;
+        position: fixed;
+        width: 240px;
+        padding-top: 0;
+        height: 100%;
+        transition: .05s ease-in;
+        
+        .sidebar-head{
+            padding: 4px 20px;
+            width: 240px;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+        }
+    }
+    
+    .toggle-page-wrapper-margin-l {
+        margin-left: 0 !important;
+    }
+
+    
+    #page-wrapper{
+        min-height: 601px;
+        margin-top: 5rem;
+        position: inherit;
+        background: #edf1f5;
+        
+        .container-fluid{
+            margin: 0 0 0 240px;
+        }
+    }
+    
+    .c-pointer{
+        cursor: pointer;
+    }
+    
+    
+}
