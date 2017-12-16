@@ -6,8 +6,9 @@ import GoogleOAuth2Instance from './GoogleOAuth2Instance'
 
 class GoogleRestService extends GoogleOAuth2Instance{
     
-    constructor(db){
-        super(db);
+    constructor(db, instance){
+        super(db, instance);
+        this.instance = instance;
         this.db = db;
         this.oauth2Client = null;
     }

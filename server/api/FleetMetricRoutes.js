@@ -1,13 +1,13 @@
 
 import GoogleRestService from './../google-api-service/GoogleRestService';
 
-module.exports = function(app, db){
+module.exports = function(app, db, instance){
   
   app.use('/api/fleetmetric/active/user', function(req, res){
     console.log(req.user);
     db.set('user', req.user).write();
     
-    var calendar_auth_url = new GoogleRestService(db).getOAuthClientInstance().generateAuthUrl({
+    var calendar_auth_url = new GoogleRestService(db, instance).getOAuthClientInstance().generateAuthUrl({
       access_type: 'offline',
       scope: ['https://www.googleapis.com/auth/userinfo.profile',
               'https://www.googleapis.com/auth/userinfo.email',
@@ -23,7 +23,7 @@ module.exports = function(app, db){
     
     var code = req.query.code;
     console.log(code);
-    new GoogleRestService(db).getOAuthClientInstance().getToken(code, function(err, tokens){
+    new GoogleRestService(db, instance).getOAuthClientInstance().getToken(code, function(err, tokens){
       if(!err){
         console.log('~~~~~~~~~~~~~>>> /api/auth/google/calendar/callback');
         console.log(tokens);

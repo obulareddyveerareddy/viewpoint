@@ -7,7 +7,6 @@ import morgan     from 'morgan';
 import low        from 'lowdb';
 import FileSync   from 'lowdb/adapters/FileSync';
 
-
 const app      = express();
 const compiler = webpack(config);
 const adapter  = new FileSync('fleetmetric.json');
@@ -29,20 +28,18 @@ app.get('/', function(req, res) {
   res.sendFile(path.join( __dirname, '../src/index.html'));
 });
 
-require('./api/AuthRoutes')(app, db);
-require('./api/FleetMetricRoutes')(app, db);
-require('./api/GoogleCalendarRoutes')(app, db);
+console.log('instance -- '+process.env.instance);
+let instance;
+if(process.env.instance){
+  instance= process.env.instance
+}else{
+  instance = 'dev';
+}
 
-/***
-app.listen(port, function(err) {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log(`http://localhost:${port}`);
-  }
-});
+require('./api/AuthRoutes')(app, db, instance);
+require('./api/FleetMetricRoutes')(app, db, instance);
+require('./api/GoogleCalendarRoutes')(app, db, instance);
 
-*/
 
 var port = Number( process.env.PORT || 8080 );
 app.listen(port, function(){
