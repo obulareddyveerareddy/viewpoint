@@ -1,5 +1,7 @@
 import * as types from './ActionTypes';
 
-export function googleOAuthPermissions(googleOAuth){
-  return {type:types.GOOGLE_OAUTH_PERMISSIONS, googleOAuth};
+export function getGoogleLoggedUserProfile(userProfile){
+    console.log('~~~~~~~~~~>>> Actions @ getGoogleLoggedUserProfile(.)');
+    console.log(userProfile);
+    return {type:types.GOOGLE_LOGGED_USER_PROFILE, userProfile};
 };

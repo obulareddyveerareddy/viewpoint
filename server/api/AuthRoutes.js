@@ -3,7 +3,7 @@ import cfg        from './../config';
 import passport   from 'passport';
 import session    from 'express-session';
 
-module.exports = function(app){
+module.exports = function(app, db){
 
   var GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
   passport.use(new GoogleStrategy({

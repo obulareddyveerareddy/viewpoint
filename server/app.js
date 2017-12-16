@@ -4,10 +4,16 @@ import path       from 'path';
 import config     from '../webpack.config';
 import bodyParser from 'body-parser';
 import morgan     from 'morgan';
+import low        from 'lowdb';
+import FileSync   from 'lowdb/adapters/FileSync';
+
 
 const port     = 8080;
 const app      = express();
 const compiler = webpack(config);
+const adapter  = new FileSync('fleetmetric.json');
+const db       = low(adapter);
+db.defaults({ authTokenDetails:{}, user: {} }).write();
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -24,8 +30,9 @@ app.get('/', function(req, res) {
   res.sendFile(path.join( __dirname, '../src/index.html'));
 });
 
-require('./api/AuthRoutes')(app);
-require('./api/FleetMetricRoutes')(app);
+require('./api/AuthRoutes')(app, db);
+require('./api/FleetMetricRoutes')(app, db);
+require('./api/GoogleCalendarRoutes')(app, db);
 
 app.listen(port, function(err) {
   if (err) {

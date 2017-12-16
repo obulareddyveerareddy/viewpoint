@@ -1,0 +1,81 @@
+{
+  "authTokenDetails": {
+    "access_token": "ya29.GlwkBbDZD4lkpIOjD6ao-Hjw54vQxw73Zx5WBAkRbRCFzIyhXm4U_1aLhlom8uB8Wqtf4t4WGCGds2w5jIB7fapqElc1UPNKX83dvTOWfgh8z0GVT27YV7oDe9494g",
+    "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6Ijk4YzY5MmZkZDc1NWVmOTJhZWMxNjc3NjgzOWExNTAzMTg3MTYwMDUifQ.eyJhenAiOiIxMDkyMTY5OTMyNTE1LTg2ZW1kdGhpcGx2b2lqNG4xZ2llZWtlcDNnNHRoanYzLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiMTA5MjE2OTkzMjUxNS04NmVtZHRoaXBsdm9pajRuMWdpZWVrZXAzZzR0aGp2My5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjExMTA2ODMyMDU4NjMzNjM4MTM5OSIsImVtYWlsIjoidmVlcmFyZWRkeS5vYnVsYUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6IlpQV3paQ1N6OEFjT1FoTmNtTnRsYXciLCJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiaWF0IjoxNTEzMzk5NTkzLCJleHAiOjE1MTM0MDMxOTN9.GKwJb1hftvmE4F9XKNeQ-Wp4JKeK23h5BwEHoYu9rzCG0MbU6_F5T8SsSHJiUl56ATNKWkDhhsVptxAf3tLtWns1QPcj5Gzu7Sb2RA9phJEOq6fhqZUqBn1pGaD52t7dz9mK0qrnrCm38yTlxkKmzQlON24vzx_FtBEDIgKLB9vsmYsBMKfnYP9rtt4-E34-jRLz2PIPUFyeyqMvTP8sXgS5zZdq-FopoVbiPozXW0L3AGX6T8NQkJTHzirCVBExVWg1QztTYtDBml8ZEOiEa0JTcL5SEvobhMlrirE5HSxFU8cjw75sxlDqvz-0Z2_Gp85SxP-OPnzwdsikxBz10w",
+    "token_type": "Bearer",
+    "expiry_date": 1513403192226
+  },
+  "user": {
+    "provider": "google",
+    "id": "111068320586336381399",
+    "displayName": "Veera Reddy Obulareddy",
+    "name": {
+      "familyName": "Obulareddy",
+      "givenName": "Veera Reddy"
+    },
+    "isPerson": true,
+    "isPlusUser": true,
+    "placesLived": [
+      {
+        "value": "Bangalore",
+        "primary": true
+      }
+    ],
+    "language": "en",
+    "emails": [
+      {
+        "value": "veerareddy.obula@gmail.com",
+        "type": "account"
+      }
+    ],
+    "email": "veerareddy.obula@gmail.com",
+    "gender": "male",
+    "photos": [
+      {
+        "value": "https://lh3.googleusercontent.com/-aJ-hOprtUpo/AAAAAAAAAAI/AAAAAAAAKmk/xVZUzFBCxRw/photo.jpg?sz=50"
+      }
+    ],
+    "_raw": "{\n \"kind\": \"plus#person\",\n \"etag\": \"\\\"ucaTEV-ZanNH5M3SCxYRM0QRw2Y/M_10IaiV-4GdHhv1_N2pJHovYrE\\\"\",\n \"gender\": \"male\",\n \"emails\": [\n  {\n   \"value\": \"veerareddy.obula@gmail.com\",\n   \"type\": \"account\"\n  }\n ],\n \"objectType\": \"person\",\n \"id\": \"111068320586336381399\",\n \"displayName\": \"Veera Reddy Obulareddy\",\n \"name\": {\n  \"familyName\": \"Obulareddy\",\n  \"givenName\": \"Veera Reddy\"\n },\n \"url\": \"https://plus.google.com/111068320586336381399\",\n \"image\": {\n  \"url\": \"https://lh3.googleusercontent.com/-aJ-hOprtUpo/AAAAAAAAAAI/AAAAAAAAKmk/xVZUzFBCxRw/photo.jpg?sz=50\",\n  \"isDefault\": false\n },\n \"organizations\": [\n  {\n   \"name\": \"uvas network\",\n   \"title\": \"UI Developer\",\n   \"type\": \"work\",\n   \"primary\": false\n  }\n ],\n \"placesLived\": [\n  {\n   \"value\": \"Bangalore\",\n   \"primary\": true\n  }\n ],\n \"isPlusUser\": true,\n \"language\": \"en\",\n \"circledByCount\": 0,\n \"verified\": false\n}\n",
+    "_json": {
+      "kind": "plus#person",
+      "etag": "\"ucaTEV-ZanNH5M3SCxYRM0QRw2Y/M_10IaiV-4GdHhv1_N2pJHovYrE\"",
+      "gender": "male",
+      "emails": [
+        {
+          "value": "veerareddy.obula@gmail.com",
+          "type": "account"
+        }
+      ],
+      "objectType": "person",
+      "id": "111068320586336381399",
+      "displayName": "Veera Reddy Obulareddy",
+      "name": {
+        "familyName": "Obulareddy",
+        "givenName": "Veera Reddy"
+      },
+      "url": "https://plus.google.com/111068320586336381399",
+      "image": {
+        "url": "https://lh3.googleusercontent.com/-aJ-hOprtUpo/AAAAAAAAAAI/AAAAAAAAKmk/xVZUzFBCxRw/photo.jpg?sz=50",
+        "isDefault": false
+      },
+      "organizations": [
+        {
+          "name": "uvas network",
+          "title": "UI Developer",
+          "type": "work",
+          "primary": false
+        }
+      ],
+      "placesLived": [
+        {
+          "value": "Bangalore",
+          "primary": true
+        }
+      ],
+      "isPlusUser": true,
+      "language": "en",
+      "circledByCount": 0,
+      "verified": false
+    }
+  }
+}

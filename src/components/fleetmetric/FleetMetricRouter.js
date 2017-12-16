@@ -3,6 +3,8 @@ import $        from 'jquery';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import './FleetMetricRouter.scss';
 
+import Nav      from './common/Nav';
+import Sidebar  from './common/Sidebar';
 import HomeLink from './home/HomeLink';
 
 class PortfolioRouter extends React.Component{
@@ -22,27 +24,17 @@ class PortfolioRouter extends React.Component{
     console.log(this.props);
     return(
       <div id="wrapper">
-        <nav className="navbar fixed-top navbar-dark bg-dark">
-          <div className="navbar-header">
-            <div className="d-flex">
-              <div className="top-left-part">
-                <a className="logo text-white" href="index.html"><i className="fa fa-bus fa-2x" aria-hidden="true"> FleetMetric</i></a>
-              </div>
-              <div className="sidebar-toggle">
-                <a className="logo text-white c-pointer" onClick={this.toggleSideBar}><i className="fa fa-bars fa-2x" aria-hidden="true"></i></a>
-              </div>
-            </div>
-          </div>
-        </nav>
-        <div className="navbar-default sidebar" id="sidemenubar">
-          <div className="sidebar-head mt-2">
-            <span className="hidden-xs">
-                <i className="fa fa-bus fa-2x" aria-hidden="true"> FleetMetric</i>
-            </span>
-          </div>
-        </div>
+        <Nav toggleSideBar={this.toggleSideBar}></Nav>
+        <Sidebar></Sidebar>
         <div id="page-wrapper">
-          <div className="container-fluid">
+          <div className="container-fluid page-wrapper-container">
+            <div className="row bg-title">
+              <div className="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 className="page-title">Dashboard 1</h4> 
+              </div>
+              <div className="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+              </div>          
+            </div>
             <Switch>
               <Route path="/fleetmetric/"     exact   component={HomeLink} />
             </Switch>

@@ -6,13 +6,18 @@ class HomePage extends React.Component{
   constructor(props){
     super(props);
   }
+  
+  componentWillMount(){
+    this.props.getLoggedInUser();
+    this.props.getTenGoogleCalendarEventsByUser();
+  }
 
   render(){
-    var {googleOAuth} = this.props;
-    console.log('-------------------------- GoogleOAuth --------------------------');
-    console.log(googleOAuth);
+    var {userProfile} = this.props;
+    console.log('-------------------------- userProfile --------------------------');
+    console.log(userProfile);
     return(
-      <div>
+      <div className="row ml-2">
         <h1>Here comes workspace</h1>
       </div>
     );
