@@ -8,7 +8,6 @@ import low        from 'lowdb';
 import FileSync   from 'lowdb/adapters/FileSync';
 
 
-const port     = 8080;
 const app      = express();
 const compiler = webpack(config);
 const adapter  = new FileSync('fleetmetric.json');
@@ -34,10 +33,18 @@ require('./api/AuthRoutes')(app, db);
 require('./api/FleetMetricRoutes')(app, db);
 require('./api/GoogleCalendarRoutes')(app, db);
 
+/***
 app.listen(port, function(err) {
   if (err) {
     console.log(err);
   } else {
     console.log(`http://localhost:${port}`);
   }
+});
+
+*/
+
+var port = Number( process.env.PORT || 8080 );
+app.listen(port, function(){
+  console.log( "Listening on port " + port );
 });
