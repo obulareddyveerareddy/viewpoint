@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Fleet Management & Tour planner",
   "main": "index.js",
+  "engines": {
+    "npm": "3.10.10"
+  },
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "webpack",
