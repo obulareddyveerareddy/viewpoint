@@ -29,23 +29,6 @@ module.exports = function(app, db, instance){
         db.get('authTokenDetails').push({id:userUniqueId, token:tokens}).write();
         googleOAuth2Instance.getOAuth2ClientInstance(db, instance).credentials = tokens;
         googleOAuth2Instance.setOAuth2ClientCredentials(tokens);
-        
-        /**
-        var sheets = google.sheets('v4');
-        sheets.spreadsheets.create({
-            auth: googleOAuth2Instance.getOAuth2Client(),
-            resource: {
-                properties:{
-                    title: "FleetMetric"
-                }
-            }
-        }, (err, response) => {
-            console.log('----------------->>> FleetMetric Router');
-            console.log(err);
-            console.log(response);
-        });
-        **/
-            
       }
     });
     res.redirect('/#/fleetmetric/');
