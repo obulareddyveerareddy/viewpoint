@@ -1,10 +1,4 @@
 {
-  "authTokenDetails": {
-    "access_token": "ya29.GlwkBWoxgd2iDd0sBuO-8pYOk6WDYavi2lPHdJlcTNoEcRHHV2gxjvJWsdCIhN5QIlXXDfHSSAOk3NpLraeqqpAmG5AIa-hC7sDh0-lyHrCgzOeKlnJ6NMFBsaxZag",
-    "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6Ijk4YzY5MmZkZDc1NWVmOTJhZWMxNjc3NjgzOWExNTAzMTg3MTYwMDUifQ.eyJhenAiOiIxMDkyMTY5OTMyNTE1LTg2ZW1kdGhpcGx2b2lqNG4xZ2llZWtlcDNnNHRoanYzLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiMTA5MjE2OTkzMjUxNS04NmVtZHRoaXBsdm9pajRuMWdpZWVrZXAzZzR0aGp2My5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjExMTA2ODMyMDU4NjMzNjM4MTM5OSIsImVtYWlsIjoidmVlcmFyZWRkeS5vYnVsYUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6Ik5wdzZFUU9fTEEwT0VJWTRVcVBaWHciLCJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiaWF0IjoxNTEzNDE1OTkwLCJleHAiOjE1MTM0MTk1OTB9.m-atZTKaU423l0-4Jtru_zpFThkVSfvr-5v0TBeTQXXLnxFQ3y7CQtvi2-2qB30FLXQMgacUXSeWVRYwRBkLldN9sFWQg_sKFwoQxaQIz4MrVJwihUez8H2kav8xxOMKfGYqHsGydiwa8_TfA1Cr5vMbOtDdkD17W0zwDGLDktfQ_0jnZE5ubq5q6r-90lKdVInGNdGovjaVcbc-9RhcEeyDy6I2bT9kGGS6x9VbqcWwIWwXPshclIlBr5o3DEc6hsclgK7GniUEPfmBAPDvhyzpbWEGQuk3UrRx0PpSf_pFm0A4qhQUPxQomkaPxx84nszdZXW4_M-ZQAAiXy-lIA",
-    "token_type": "Bearer",
-    "expiry_date": 1513419589537
-  },
   "user": {
     "provider": "google",
     "id": "111068320586336381399",
@@ -77,5 +71,16 @@
       "circledByCount": 0,
       "verified": false
     }
-  }
+  },
+  "authTokenDetails": [
+    {
+      "id": "111068320586336381399",
+      "token": {
+        "access_token": "ya29.GlwlBXvIxMJ8bp9hd_yuXYuGAqbgSSAgV0G3tdhwGCW_Gc94SDbIbCn4O2ltferXrQryLEPvKSM-n7NR8-KTw0EI83_1m762-S1QqpDpr2mFmwpgvi60t5GXVdxKOw",
+        "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFjMGJiZTNiZTNkY2ZiNzFlNTkxMzdhZWFlZTNlNDcyMGUxYTE3OWUifQ.eyJhenAiOiIxMDkyMTY5OTMyNTE1LTg2ZW1kdGhpcGx2b2lqNG4xZ2llZWtlcDNnNHRoanYzLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiMTA5MjE2OTkzMjUxNS04NmVtZHRoaXBsdm9pajRuMWdpZWVrZXAzZzR0aGp2My5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjExMTA2ODMyMDU4NjMzNjM4MTM5OSIsImVtYWlsIjoidmVlcmFyZWRkeS5vYnVsYUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6IkRHSV85bk5nUnBjRHU1aWlIZWl3U1EiLCJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiaWF0IjoxNTEzNTA4MDMzLCJleHAiOjE1MTM1MTE2MzN9.TBxibKGHfrpikTg8rtRlL5HdTuFJibq0-4qE5MKT3cEZR9OSocDnpDrrF3g0x_Z-bo_-jpdxXHcDj2XIxujwUYnqsPSdSUZ-xB1h1wCd4AxfEMhwO9OXUmKLe5P2_-HTbh7hMT3zx4Pvu42_8PZ0Exv0ug17k5zrD2W9-e5bc4yOd7pLh2khhU3y4UFD6MG_DCR-EWr5RMBGZbaGpqkgB_RuMZWxMQOuL4AyfsxKCHQp-mnJhPHKuQk82Y0D4Y0ONwSkUvZeowCMk2R6YkhPEecbO_8KhE5SV--Agsdp0HsswDgFYpmSz-UNCUcbX2NHpkuSL_mVe2P38sHd2-7yyw",
+        "token_type": "Bearer",
+        "expiry_date": 1513511632372
+      }
+    }
+  ]
 }

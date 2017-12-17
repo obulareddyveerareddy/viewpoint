@@ -1,24 +1,18 @@
 
-import google           from 'googleapis';
-import googleAuth       from 'google-auth-library';
-import credentials      from './../google-api-service/client_secret.json';
-import GoogleOAuth2Instance from './GoogleOAuth2Instance'
+import google                   from 'googleapis';
+import {googleOAuth2Instance}   from './GoogleOAuth2Instance'
 
-class GoogleRestService extends GoogleOAuth2Instance{
+class GoogleRestService{
     
-    constructor(db, instance){
-        super(db, instance);
-        this.instance = instance;
-        this.db = db;
-        this.oauth2Client = null;
+    constructor(){
+        console.log('$$ ~~~~~~~~~~~~~~~~~ >>> GoogleRestService <<< ~~~~~~~~~~~~~~~~~ $$');
     }
     
-    getAllCalendarEventsByUser(){
-        let self = this;
+    getAllCalendarEventsByUser(db, instance){
         return new Promise(function (resolve, reject) {
             var calendar = google.calendar('v3');
             calendar.events.list({
-                auth: self.getOAuth2Client(),
+                auth: googleOAuth2Instance.getOAuth2Client(),
                 calendarId: 'primary',
                 timeMin: (new Date()).toISOString(),
                 maxResults: 10,
@@ -26,21 +20,18 @@ class GoogleRestService extends GoogleOAuth2Instance{
                 orderBy: 'startTime'
             }, function(err, response) {
                 if (err) {
-                  console.log('The API returned an error: ' + err);
                   reject(err);
                 }
-                console.log('Total response.items --- '+response.items);
                 resolve(response.items);
             });
         })
     }
     
-    createSpeadSheet(){
-        let self    = this;
+    createSpeadSheet(db, instance){
         return new Promise(function (resolve, reject) {
             var sheets = google.sheets('v4');
             sheets.spreadsheets.create({
-                auth: self.getOAuth2Client(),
+                auth: googleOAuth2Instance.getOAuth2Client(),
                 resource: {
                     properties:{
                         title: "FleetMetric"
@@ -48,10 +39,8 @@ class GoogleRestService extends GoogleOAuth2Instance{
                 }
             }, (err, response) => {
                 if (err) {
-                  console.log('The API returned an error: ' + err);
                   reject(err);
                 } else {
-                    console.log(response);
                     resolve(response);
                 }
             });
@@ -60,4 +49,4 @@ class GoogleRestService extends GoogleOAuth2Instance{
     
 }
 
-export default GoogleRestService;
+export let googleRestService = new GoogleRestService();

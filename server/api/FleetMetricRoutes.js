@@ -1,13 +1,14 @@
 
-import GoogleRestService from './../google-api-service/GoogleRestService';
+import google                   from 'googleapis';
+import LowdbDaoService          from './../google-api-service/LowdbDaoService';
+import {googleOAuth2Instance}   from './../google-api-service/GoogleOAuth2Instance'
 
 module.exports = function(app, db, instance){
   
   app.use('/api/fleetmetric/active/user', function(req, res){
-    console.log(req.user);
     db.set('user', req.user).write();
     
-    var calendar_auth_url = new GoogleRestService(db, instance).getOAuthClientInstance().generateAuthUrl({
+    var calendar_auth_url = googleOAuth2Instance.getOAuth2ClientInstance(db, instance).generateAuthUrl({
       access_type: 'offline',
       scope: ['https://www.googleapis.com/auth/userinfo.profile',
               'https://www.googleapis.com/auth/userinfo.email',
@@ -22,14 +23,29 @@ module.exports = function(app, db, instance){
   app.use('/api/auth/google/calendar/callback', function(req, res){
     
     var code = req.query.code;
-    console.log(code);
-    new GoogleRestService(db, instance).getOAuthClientInstance().getToken(code, function(err, tokens){
+    googleOAuth2Instance.getOAuth2ClientInstance(db, instance).getToken(code, function(err, tokens){
       if(!err){
-        console.log('~~~~~~~~~~~~~>>> /api/auth/google/calendar/callback');
-        console.log(tokens);
-        console.log(tokens.access_token);
-        db.set('authTokenDetails', tokens).write();
-        console.log(db.get('authTokenDetails'));
+        let userUniqueId = new LowdbDaoService(db).getLoggedInUserUniqueId();
+        db.get('authTokenDetails').push({id:userUniqueId, token:tokens}).write();
+        googleOAuth2Instance.getOAuth2ClientInstance(db, instance).credentials = tokens;
+        googleOAuth2Instance.setOAuth2ClientCredentials(tokens);
+        
+        /**
+        var sheets = google.sheets('v4');
+        sheets.spreadsheets.create({
+            auth: googleOAuth2Instance.getOAuth2Client(),
+            resource: {
+                properties:{
+                    title: "FleetMetric"
+                }
+            }
+        }, (err, response) => {
+            console.log('----------------->>> FleetMetric Router');
+            console.log(err);
+            console.log(response);
+        });
+        **/
+            
       }
     });
     res.redirect('/#/fleetmetric/');

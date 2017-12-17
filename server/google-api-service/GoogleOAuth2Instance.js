@@ -2,34 +2,34 @@
 import google           from 'googleapis';
 import googleAuth       from 'google-auth-library';
 import credentials      from './client_secret.json';
+import LowdbDaoService  from './LowdbDaoService';
 
 class GoogleOAuth2Instance{
     
-    constructor(db, instance){
-        this.db = db;
-        this.instance = instance;
+    constructor(){
+        console.log('$$ ~~~~~~~~~~~~~~~~~ >>> GoogleOAuth2Instance <<< ~~~~~~~~~~~~~~~~~ $$');
         this.oauth2Client = null;
     }
     
-    getOAuthClientInstance(){
-        var clientSecret    = credentials[this.instance].web.client_secret;
-        var clientId        = credentials[this.instance].web.client_id;
-        var redirectUrl     = credentials[this.instance].web.redirect_uris[0];
+    getOAuth2ClientInstance(db, instance){
+        var clientSecret    = credentials[instance].web.client_secret;
+        var clientId        = credentials[instance].web.client_id;
+        var redirectUrl     = credentials[instance].web.redirect_uris[0];
         var auth            = new googleAuth();
-        return new auth.OAuth2(clientId, clientSecret, redirectUrl);
+        this.oauth2Client   = new auth.OAuth2(clientId, clientSecret, redirectUrl);
+        return this.oauth2Client;
+    }
+    
+    setOAuth2ClientCredentials(tokens){
+        this.oauth2Client.credentials = tokens;
+        this.oauth2Client.expiry_date = true;
     }
     
     getOAuth2Client(){
-        var clientSecret    = credentials[this.instance].web.client_secret;
-        var clientId        = credentials[this.instance].web.client_id;
-        var redirectUrl     = credentials[this.instance].web.redirect_uris[0];
-        var auth            = new googleAuth();
-        this.oauth2Client    = new auth.OAuth2(clientId, clientSecret, redirectUrl);
-        this.oauth2Client.credentials = this.db.getState().authTokenDetails;
-        
         return this.oauth2Client;
     }
     
 }
 
-export default GoogleOAuth2Instance;
+
+export let googleOAuth2Instance = new GoogleOAuth2Instance();

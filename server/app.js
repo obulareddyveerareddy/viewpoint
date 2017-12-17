@@ -11,8 +11,8 @@ const app      = express();
 const compiler = webpack(config);
 const adapter  = new FileSync('fleetmetric.json');
 const db       = low(adapter);
-db.defaults({ authTokenDetails:{}, user: {} }).write();
-
+db.set('authTokenDetails', []).write();
+        
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(morgan('dev'));
@@ -38,7 +38,7 @@ if(process.env.instance){
 
 require('./api/AuthRoutes')(app, db, instance);
 require('./api/FleetMetricRoutes')(app, db, instance);
-require('./api/GoogleCalendarRoutes')(app, db, instance);
+require('./api/HomePageRoutes')(app, db, instance);
 
 
 var port = Number( process.env.PORT || 8080 );
