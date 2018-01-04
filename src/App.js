@@ -12,7 +12,7 @@ import 'font-awesome/scss/font-awesome.scss';
 import './App.scss';
 
 import PortfolioRouter            from './components/portfolio/PortfolioRouter';
-import FleetMetricRouter          from './components/fleetmetric/FleetMetricRouter';
+import FleetMetricLink            from './components/fleetmetric/FleetMetricLink';
 import AuthRouter                 from './components/auth/AuthRouter';
 const store = configureStore();
 
@@ -24,7 +24,7 @@ export default class Main extends Component {
       <HashRouter>
         <Switch>
           <Route path="/auth/**"          component={AuthRouter} />
-          <Route path="/fleetmetric/**"   component={FleetMetricRouter} />
+          <Route path="/fleetmetric/**"   component={FleetMetricLink} />
           <Route path="/"                 component={PortfolioRouter} />
         </Switch>
       </HashRouter>

@@ -1,14 +1,12 @@
 
 import google                   from 'googleapis';
-import LowdbDaoService          from './../google-api-service/LowdbDaoService';
-import {googleOAuth2Instance}   from './../google-api-service/GoogleOAuth2Instance'
+import {googleOAuth2Instance}   from './../google-api-service/GoogleOAuth2Instance';
+import {personStore}            from './../store/PersonStore';
 
-module.exports = function(app, db, instance){
+module.exports = function(app, instance){
   
   app.use('/api/fleetmetric/active/user', function(req, res){
-    db.set('user', req.user).write();
-    
-    var calendar_auth_url = googleOAuth2Instance.getOAuth2ClientInstance(db, instance).generateAuthUrl({
+    var authUrl = googleOAuth2Instance.getOAuth2ClientInstance(instance).generateAuthUrl({
       access_type: 'offline',
       scope: ['https://www.googleapis.com/auth/userinfo.profile',
               'https://www.googleapis.com/auth/userinfo.email',
@@ -17,17 +15,18 @@ module.exports = function(app, db, instance){
               'https://www.googleapis.com/auth/spreadsheets',
               'https://www.googleapis.com/auth/calendar']
     });
-    res.redirect(calendar_auth_url);
+    res.redirect(authUrl);
   });
   
   app.use('/api/auth/google/calendar/callback', function(req, res){
     
     var code = req.query.code;
-    googleOAuth2Instance.getOAuth2ClientInstance(db, instance).getToken(code, function(err, tokens){
+    googleOAuth2Instance.getOAuth2ClientInstance(instance).getToken(code, function(err, tokens){
       if(!err){
-        let userUniqueId = new LowdbDaoService(db).getLoggedInUserUniqueId();
-        db.get('authTokenDetails').push({id:userUniqueId, token:tokens}).write();
-        googleOAuth2Instance.getOAuth2ClientInstance(db, instance).credentials = tokens;
+        var user = req.user;
+        personStore.setUser(user);
+        personStore.setTokenById(user.id, tokens);
+        googleOAuth2Instance.getOAuth2ClientInstance(instance).credentials = tokens;
         googleOAuth2Instance.setOAuth2ClientCredentials(tokens);
       }
     });
@@ -35,9 +34,7 @@ module.exports = function(app, db, instance){
   });
   
   app.use('/api/auth/fleetmetric/user', function(req, res){
-  
-    let user = db.get('user');
-    res.send(user);
+    res.send(req.user);
   });
 
 };

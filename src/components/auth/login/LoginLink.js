@@ -11,11 +11,13 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
+    //href='/api/auth/google'
     googleOAuthSignIn: () => {
       console.log('-------------------->>> googleOAuthSignIn <<<--------------------');
       fetch('/api/auth/google', {method: "GET"})
       .then((resp) => resp.json())
       .then(function(data) {
+          console.log('------------ /api/auth/google ---------------');
           console.log(data);
           //dispatch(authActions.validateUserLoginDetails(data));
       });

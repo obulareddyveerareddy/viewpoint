@@ -3,9 +3,9 @@ import $        from 'jquery';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import './FleetMetricRouter.scss';
 
-import Nav      from './common/Nav';
-import Sidebar  from './common/Sidebar';
-import HomeLink from './home/HomeLink';
+import Nav          from './common/Nav';
+import Sidebar      from './common/Sidebar';
+import HomeLink     from './home/HomeLink';
 
 class PortfolioRouter extends React.Component{
 
@@ -15,20 +15,27 @@ class PortfolioRouter extends React.Component{
     this.toggleSideBar = this.toggleSideBar.bind(this);
   }
   
-  toggleSideBar(){
-    $("#sidemenubar").toggleClass("hide-sidebar");
-    $("#page-wrapper div").toggleClass("toggle-page-wrapper-margin-l");
+  componentWillMount(){
+    this.props.getLoggedInUser();
+  }
+  
+  toggleSideBar(event){
+    event.preventDefault();
+    $('#wrapper').toggleClass("toggled");
   }
 
   render(){
+    let dataSource = this.props.userProfile;
+    console.log('~~~~~~~~~~~~~~~~>>> FleetMetricRouter <<<~~~~~~~~~~~~~~~~');
     console.log(this.props);
+    console.log(dataSource);
     return(
-      <div id="wrapper">
+      <div id="wrapper" className="toggled">
         <Nav toggleSideBar={this.toggleSideBar}></Nav>
-        <Sidebar></Sidebar>
-        <div id="page-wrapper">
-          <div className="container-fluid page-wrapper-container">
-            <div className="row bg-title">
+        <Sidebar userProfile={this.props.userProfile}></Sidebar>
+        <div id="page-content-wrapper">
+          <div className="container-fluid">
+            <div className="row bg-white">
               <div className="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                 <h4 className="page-title">Dashboard 1</h4> 
               </div>
@@ -36,7 +43,7 @@ class PortfolioRouter extends React.Component{
               </div>          
             </div>
             <Switch>
-              <Route path="/fleetmetric/"     exact   component={HomeLink} />
+              <Route path="/fleetmetric/" exact component={HomeLink} />
             </Switch>
           </div>
         </div>

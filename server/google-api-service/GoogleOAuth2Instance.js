@@ -1,8 +1,6 @@
 
-import google           from 'googleapis';
 import googleAuth       from 'google-auth-library';
 import credentials      from './client_secret.json';
-import LowdbDaoService  from './LowdbDaoService';
 
 class GoogleOAuth2Instance{
     
@@ -11,7 +9,7 @@ class GoogleOAuth2Instance{
         this.oauth2Client = null;
     }
     
-    getOAuth2ClientInstance(db, instance){
+    getOAuth2ClientInstance(instance){
         var clientSecret    = credentials[instance].web.client_secret;
         var clientId        = credentials[instance].web.client_id;
         var redirectUrl     = credentials[instance].web.redirect_uris[0];

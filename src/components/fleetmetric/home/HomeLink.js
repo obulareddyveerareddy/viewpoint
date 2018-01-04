@@ -7,7 +7,8 @@ const mapStateToProps = (state, ownProps) => {
   console.log('------------- mapStateToProps ------------');
   console.log(state);
   return {
-    userProfile:state.userProfile
+    userProfile:state.userProfile,
+    fleetDetails:state.fleetDetails
   }
 }
 
@@ -23,19 +24,25 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         dispatch(homeActions.getGoogleLoggedUserProfile(responseAsJson));
       })
       .catch(function(err) {
-        console.log('---------------- Error :( ----------------');
+        if(err){
+          console.log('---------------- Error :( ----------------');  
+        }
       });
     },
-    getTenGoogleCalendarEventsByUser:() => {
-      fetch('/api/google/calendar/events').then(function(response){
-        console.log('---------------- /api/google/calendar/events :( ----------------');
+    
+    getAllFleetDetails:() => {
+      fetch('/api/google/spreadsheet/get/fleet').then(function(response) {
+        console.log('---------------- /api/google/spreadsheet/get/fleet :) ----------------');
         return response.json();
       })
       .then(function(responseAsJson) {
         console.log(responseAsJson);
+        dispatch(homeActions.getAllFleetDetails(responseAsJson));
       })
       .catch(function(err) {
-        console.log('---------------- Error :( ----------------');
+        if(err){
+          console.log('---------------- Error :( ----------------');  
+        }
       });
     }
   }

@@ -44,7 +44,7 @@ const FleetMetricCard = () => {
           <h2>FleetMetric</h2>
           <div>
           <a href="#" target="_blank" className="btn btn-primary rounded-circle m-2"><i className="fa fa-github" /></a>
-          <NavLink href="#" to="/auth/login" className="btn btn-primary rounded-circle m-2"><i className="fa fa-sign-in" /></NavLink>
+          <a href='/api/auth/google'  className="btn btn-primary rounded-circle m-2"><i className="fa fa-sign-in" /></a>
           </div>
         </div>
         <h5 className="d-flex justify-content-center">Save your Fleet, Time & Money.</h5>
@@ -74,7 +74,7 @@ const FleetMetricCard = () => {
       </div>
       <div className="card-footer">
         <div className="d-flex justify-content-center">
-          <button className="btn btn-primary m-2 rounded-circle"><i className="fa fa-sign-in" aria-hidden="true"></i></button>
+          <a href='/api/auth/google' className="btn btn-primary m-2 rounded-circle"><i className="fa fa-sign-in" aria-hidden="true"></i></a>
           <a href="#" className="mt-3">OpenSouce solution, Get Start now !!!</a>
         </div>
       </div>

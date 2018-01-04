@@ -3,7 +3,7 @@ import cfg        from './../config';
 import passport   from 'passport';
 import session    from 'express-session';
 
-module.exports = function(app, db, instance){
+module.exports = function(app, instance){
   
   let passportConfig = {
       clientID:'1092169932515-86emdthiplvoij4n1gieekep3g4thjv3.apps.googleusercontent.com',
@@ -51,6 +51,8 @@ module.exports = function(app, db, instance){
      }));
 
   app.use('/api/auth/success', function(req, res){
+    console.log('------------------>>> /api/auth/success <<<------------------');
+    console.log(req);
     res.redirect('/#/fleetmetric/');
   })
 

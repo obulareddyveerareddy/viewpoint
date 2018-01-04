@@ -8,7 +8,7 @@ class GoogleRestService{
         console.log('$$ ~~~~~~~~~~~~~~~~~ >>> GoogleRestService <<< ~~~~~~~~~~~~~~~~~ $$');
     }
     
-    getAllCalendarEventsByUser(db, instance){
+    getAllCalendarEventsByUser(instance){
         return new Promise(function (resolve, reject) {
             var calendar = google.calendar('v3');
             calendar.events.list({
@@ -27,25 +27,7 @@ class GoogleRestService{
         })
     }
     
-    createSpeadSheet(db, instance){
-        return new Promise(function (resolve, reject) {
-            var sheets = google.sheets('v4');
-            sheets.spreadsheets.create({
-                auth: googleOAuth2Instance.getOAuth2Client(),
-                resource: {
-                    properties:{
-                        title: "FleetMetric"
-                    }
-                }
-            }, (err, response) => {
-                if (err) {
-                  reject(err);
-                } else {
-                    resolve(response);
-                }
-            });
-        })
-    }
+    
     
 }
 
