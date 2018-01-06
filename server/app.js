@@ -5,6 +5,7 @@ import config     from '../webpack.config';
 import bodyParser from 'body-parser';
 import morgan     from 'morgan';
 
+
 const app      = express();
 const compiler = webpack(config);
 
@@ -33,7 +34,7 @@ if(process.env.instance){
 require('./api/AuthRoutes')(app, instance);
 require('./api/FleetMetricRoutes')(app, instance);
 require('./api/HomePageRoutes')(app, instance);
-
+require('./api/ForwardToGoogleApiRoutes')(app, instance);
 
 var port = Number( process.env.PORT || 8080 );
 app.listen(port, function(){

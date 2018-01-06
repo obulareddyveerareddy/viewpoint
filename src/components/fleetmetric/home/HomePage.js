@@ -1,10 +1,13 @@
-import React from 'react';
+import React  from 'react';
+import {Link} from 'react-router-dom';
+import BreadcrumbSection from './../common/BreadcrumbSection'
 import './HomePage.scss';
 
 class HomePage extends React.Component{
   
   constructor(props){
     super(props);
+    this.breadcrums = [{name:'Dashboard'}];
   }
   
   componentWillMount(){
@@ -19,8 +22,9 @@ class HomePage extends React.Component{
     return(
       <div className="row">
         <div className="col-sm-12">
+          <BreadcrumbSection dataSource={this.breadcrums} />
           <div className="d-flex flex-row-reverse m-2">
-            <button type="button" className="btn btn-primary">Add</button>
+            <Link to="/fleetmetric/fleet/add" className="btn btn-primary">Add</Link>
           </div>
           <div className="d-flex flex-row">
             <table className="table table-bordered">

@@ -6,6 +6,7 @@ import './FleetMetricRouter.scss';
 import Nav          from './common/Nav';
 import Sidebar      from './common/Sidebar';
 import HomeLink     from './home/HomeLink';
+import AddFleetLink from './addfleet/AddFleetLink';
 
 class PortfolioRouter extends React.Component{
 
@@ -35,15 +36,9 @@ class PortfolioRouter extends React.Component{
         <Sidebar userProfile={this.props.userProfile}></Sidebar>
         <div id="page-content-wrapper">
           <div className="container-fluid">
-            <div className="row bg-white">
-              <div className="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                <h4 className="page-title">Dashboard 1</h4> 
-              </div>
-              <div className="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-              </div>          
-            </div>
             <Switch>
               <Route path="/fleetmetric/" exact component={HomeLink} />
+              <Route path="/fleetmetric/fleet/add" exact component={AddFleetLink} />
             </Switch>
           </div>
         </div>
