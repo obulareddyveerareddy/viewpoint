@@ -15,7 +15,6 @@ class TextboxPlaceAutoComplete extends React.Component{
         
         this.onPlaceSelect      = this.onPlaceSelect.bind(this);
         this.selectSuggestion   = this.selectSuggestion.bind(this);
-        this.hidePredictions    = this.hidePredictions.bind(this);
         this.setPlacePredictions= this.setPlacePredictions.bind(this);
         this.isMapsApiReqInProgress = false;
     }
@@ -25,11 +24,9 @@ class TextboxPlaceAutoComplete extends React.Component{
         this.isMapsApiReqInProgress = true;
         
         fetch('/maps/api/place/autocomplete/json?input='+queryString).then(function(response) {
-            console.log('---------------- Place Autocomplete :) ----------------');
             return response.json();
         })
         .then(function(responseAsJson) {
-            console.log(JSON.stringify(responseAsJson));
             self.isMapsApiReqInProgress = false;
             self.setState({predictions:responseAsJson.predictions, showPredictions:true});
             self.props.selectedPlace(self.state.place);
@@ -56,17 +53,8 @@ class TextboxPlaceAutoComplete extends React.Component{
         console.log('~~~~~~~~~~~~~~~~~ selectSuggestion ~~~~~~~~~~~~~~~~~');
         this.setState({place:item, showPredictions:false});
         this.props.selectedPlace(item);
+        console.log('----------- error');
         event.preventDefault();
-    }
-    
-    hidePredictions(event){
-        console.log('~~~~~~~~~~~~~~~~~ FocusOut Event ~~~~~~~~~~~~~~~~~');
-        console.log(event);
-        if(!this.state.showPredictions){
-            this.setPlacePredictions(this.state.place);
-        }
-        this.setState({showPredictions:!this.state.showPredictions});
-        //event.preventDefault();
     }
     
     render(){
@@ -84,7 +72,6 @@ class TextboxPlaceAutoComplete extends React.Component{
                          placeholder="Enter Fleet Starting Point"
                          value={this.state.place}
                          onChange={(event)=>this.onPlaceSelect(event)}
-                         //onBlur={(event)=>this.hidePredictions(event)}
                          />
                   { 
                     (this.state.showPredictions) ?

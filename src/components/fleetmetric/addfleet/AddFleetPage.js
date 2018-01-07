@@ -1,7 +1,9 @@
-import React                    from 'react';
-import BreadcrumbSection        from './../common/BreadcrumbSection';
-import TextboxPlaceAutoComplete from './../common/TextboxPlaceAutoComplete';
-import {Link}                   from 'react-router-dom';
+import React                        from 'react';
+import BreadcrumbSection            from './../common/BreadcrumbSection';
+import DropdownComponent            from './../components/DropdownComponent';
+import {Link}                       from 'react-router-dom';
+import DailyPassengerServiceForm    from './../components/DailyPassengerServiceForm';
+import RentalAgrementServiceForm    from './../components/RentalAgrementServiceForm';
 import './AddFleetPage.scss';
 
 class AddFleetPage extends React.Component{
@@ -10,26 +12,39 @@ class AddFleetPage extends React.Component{
         super(props);
         
         this.state={
-            startingPlace:'',
-            destinationPlace:''
+            fleetServiceType:undefined
         }
         
+        this.fleetServiceTypes = [
+            {value:1001, option:"Daily passenger service (point to point)"},
+            {value:1002, option:"Rental agrement service"},
+            {value:1003, option:"Tour traveller service"}
+            ];
         this.breadcrums = [{name:'Dashboard', link:'/fleetmetric/'}, {name:'Add New Fleet'}];
-        this.setFleetStartingPlace = this.setFleetStartingPlace.bind(this);
-        this.setFleetDestinationPlace = this.setFleetDestinationPlace.bind(this);
-    }
-    
-    setFleetStartingPlace(param){
-        console.log('~~~~~~~~~~~~~~~ >>> setFleetStartingPlace <<< ~~~~~~~~~~~~~~~');
-        console.log(param);
-        this.setState({startingPlace:param});
-    }
-    
-    setFleetDestinationPlace(param){
-        console.log('~~~~~~~~~~~~~~~ >>> setFleetDestinationPlace <<< ~~~~~~~~~~~~~~~');
-        console.log(param);
-        this.setState({destinationPlace:param});
         
+        
+        this.onDropdownValueChange      = this.onDropdownValueChange.bind(this);
+        this.renderByFleetServiceType   = this.renderByFleetServiceType.bind(this);
+    }
+    
+    onDropdownValueChange(dropdownValue){
+        console.log('~~~~~~~~~~~~~~~ >> onDropdownValueChange(.) << ~~~~~~~~~~~~~~~');
+        console.log(dropdownValue);
+        this.setState({fleetServiceType:dropdownValue});
+        console.log('------------ Error occured');
+    }
+    
+    renderByFleetServiceType(param) {
+        if(param){
+            switch(param.value) {
+                case 1001:
+                return <DailyPassengerServiceForm />;
+                case 1002:
+                return <RentalAgrementServiceForm />;
+            }
+        }
+        
+        return <div></div>;
     }
   
     render(){
@@ -47,7 +62,8 @@ class AddFleetPage extends React.Component{
                 <div className="card-body">
                     <div className="row" id="addnewfleet">
                         <div className="col-md-6 col-sm-12">
-                            <div className="form-group">
+                            <div className="d-flex flex-column mb-3">
+                                <label htmlFor="fleetCategory">Select Fleet Category</label>
                                 <select className="custom-select col-md-6 col-sm-12" id="fleetCategory"  aria-describedby="fleetCategoryHelp">
                                   <option value="1">Commertial</option>
                                   <option value="2">Personal</option>
@@ -59,31 +75,11 @@ class AddFleetPage extends React.Component{
                                 <input type="text" className="form-control" id="ownerName" aria-describedby="ownerNameHelp" placeholder="Enter Owner Name" />
                                 <small id="ownerNameHelp" className="form-text text-muted">Please enter fleet registered owner name</small>
                             </div>
-                            <div className="form-group">
-                                <label htmlFor="regNo">Register Number</label>
-                                <input type="text" className="form-control" id="regNo" aria-describedby="regNoHelp" placeholder="Enter Register Number" />
-                                <small id="regNoHelp" className="form-text text-muted">Please enter fleet unique register number</small>
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="odometer">Odometer</label>
-                                <input type="number" className="form-control" id="odometer" aria-describedby="odometerHelp" placeholder="Enter Odometer km" />
-                                <small id="odometerHelp" className="form-text text-muted">Please enter fleet seat capacity excluding driver & conductor seats.</small>
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="seatCapacity">Seating Capacity</label>
-                                <input type="number" className="form-control" id="seatCapacity" aria-describedby="seatCapacityHelp" placeholder="Enter Seating Capacity" />
-                                <small id="seatCapacityHelp" className="form-text text-muted">Please enter fleet seat capacity excluding driver & conductor seats.</small>
-                            </div>
-                            <div className="mb-2">
-                                <div className="btn-group btn-group-sm">
-                                  <button className="btn btn-warning" type="button" data-toggle="collapse" data-target="#fuelDetails" aria-expanded="false" aria-controls="fuelDetails">
-                                    Add Fuel Details
-                                  </button>
-                                  <button className="btn btn-success" type="button" data-toggle="collapse" data-target="#fleetServiceDetails" aria-expanded="false" aria-controls="fleetServiceDetails">
-                                    Add Service Details
-                                  </button>
-                                </div>
-                                <div className="collapse" id="fuelDetails">
+                            <div>
+                              <button className="btn btn-warning" type="button" data-toggle="collapse" data-target="#fuelDetails" aria-expanded="false" aria-controls="fuelDetails">
+                                Add Fuel Details
+                              </button>
+                              <div className="collapse" id="fuelDetails">
                                   <div className="card card-body">
                                     <h5 className="card-title">Fuel Details</h5>
                                     <div className="form-group">
@@ -105,6 +101,23 @@ class AddFleetPage extends React.Component{
                                     </div>
                                   </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div className="col-md-6 col-sm-12">
+                            <div className="form-group">
+                                <label htmlFor="regNo">Register Number</label>
+                                <input type="text" className="form-control" id="regNo" aria-describedby="regNoHelp" placeholder="Enter Register Number" />
+                                <small id="regNoHelp" className="form-text text-muted">Please enter fleet unique register number</small>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="odometer">Odometer</label>
+                                <input type="number" className="form-control" id="odometer" aria-describedby="odometerHelp" placeholder="Enter Odometer km" />
+                                <small id="odometerHelp" className="form-text text-muted">Please enter fleet seat capacity excluding driver & conductor seats.</small>
+                            </div>
+                            <div>
+                                <button className="btn btn-success" type="button" data-toggle="collapse" data-target="#fleetServiceDetails" aria-expanded="false" aria-controls="fleetServiceDetails">
+                                    Add Service Details
+                                </button>
                                 <div className="collapse" id="fleetServiceDetails">
                                   <div className="card card-body">
                                     <h5 className="card-title">Service Details</h5>
@@ -122,34 +135,22 @@ class AddFleetPage extends React.Component{
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-6 col-sm-12">
+                    </div>
+                    <div className="row mt-2" id="addnewfleet">
+                        <div className="col-md-12 col-sm-12">
                             <div className="card">
                                 <div className="card-header bg-secondary">
                                     <label>Configure Fleet Service</label>
                                 </div>
                                 <div className="card-body">
-                                    <div className="d-flex flex-column">
-                                        <div className="form-check">
-                                            <input className="form-check-input" type="checkbox" value="1001" id="defaultCheck1" />
-                                            <label className="form-check-label" htmlFor="defaultCheck1">Passenger service (point to point)</label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input className="form-check-input" type="checkbox" value="1002" id="defaultCheck1" />
-                                            <label className="form-check-label" htmlFor="defaultCheck1">Rental agrement service</label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input className="form-check-input" type="checkbox" value="1003" id="defaultCheck1" />
-                                            <label className="form-check-label" htmlFor="defaultCheck1">Reservation passenger service</label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input className="form-check-input" type="checkbox" value="1004" id="defaultCheck1" />
-                                            <label className="form-check-label" htmlFor="defaultCheck1">Tour traveller service</label>
-                                        </div>
-                                        <small id="serviceTypeHelp" className="form-text text-muted">Please select suitable services for fleet</small>
-                                    </div>
-                                    <div className="dropdown-divider"></div>
-                                    <TextboxPlaceAutoComplete labelText="Fleet Starting Point" labelHelpText="Select Fleet Starting Point." selectedPlace={this.setFleetStartingPlace} />
-                                    <TextboxPlaceAutoComplete labelText="Fleet Destination Point" labelHelpText="Select Fleet Destination Point." selectedPlace={this.setFleetDestinationPlace} />
+                                    <DropdownComponent 
+                                        dropdownLabel="Select fleet service type" 
+                                        dropdownOptions={this.fleetServiceTypes} 
+                                        defaultDisplay="Select fleet service" 
+                                        dropdownLabelHelpText="Please select one of the suitable services for fleet"
+                                        onDropdownValueChange={this.onDropdownValueChange} />
+                                    
+                                    {this.renderByFleetServiceType(this.state.fleetServiceType)}
                                     <div className="dropdown-divider"></div>
                                 </div>
                             </div>
