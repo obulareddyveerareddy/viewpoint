@@ -9,7 +9,7 @@ const Nav = ({toggleSideBar}) => {
               <a className="logo text-white c-pointer ml-3" onClick={toggleSideBar}><i className="fa fa-bars fa-2x" aria-hidden="true"></i></a>
             </div>
             <div className="d-flex justify-content-end">
-                <button type="button" className="btn btn-default btn-circle btn-lg"><i className="fa fa-sign-out" aria-hidden="true"></i></button>
+                <button type="button" className="btn btn-link btn-circle btn-lg"><i className="fa fa-sign-out" aria-hidden="true"></i></button>
             </div>
           </div>
         </nav>

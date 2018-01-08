@@ -1,0 +1,47 @@
+.content-header {
+    background: transparent;
+    
+    h1 {
+        margin: 0;
+        font-size: 24px;
+        
+        small {
+            font-size: 15px;
+            display: inline-block;
+            padding-left: 4px;
+            font-weight: 300;
+        }
+    }
+    
+    .breadcrumb {
+        float: right;
+        background: transparent;
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 12px;
+        padding: 7px 5px;
+        top: 15px;
+        right: 10px;
+        border-radius: 2px;
+        
+        li:before {
+            padding: 0 5px;
+            color: #ccc;
+            content: "/\00a0";
+        }
+        
+        li {
+            display: inline-block;
+            
+            a {
+                color: #444;
+                text-decoration: none;
+                display: inline-block;
+            }
+        }
+    }
+    
+    .table th{
+        border-top: 0px;
+    }
+}

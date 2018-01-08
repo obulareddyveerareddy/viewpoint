@@ -3,10 +3,11 @@ import $        from 'jquery';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import './FleetMetricRouter.scss';
 
-import Nav          from './common/Nav';
-import Sidebar      from './common/Sidebar';
-import HomeLink     from './home/HomeLink';
-import AddFleetLink from './addfleet/AddFleetLink';
+import Nav            from './common/Nav';
+import Sidebar        from './common/Sidebar';
+import HomeLink       from './home/HomeLink';
+import DashboardLink  from './dashboard/DashboardLink';
+import FleetRouter    from './fleet/FleetRouter';
 
 class PortfolioRouter extends React.Component{
 
@@ -35,12 +36,10 @@ class PortfolioRouter extends React.Component{
         <Nav toggleSideBar={this.toggleSideBar}></Nav>
         <Sidebar userProfile={this.props.userProfile}></Sidebar>
         <div id="page-content-wrapper">
-          <div className="container-fluid">
             <Switch>
-              <Route path="/fleetmetric/" exact component={HomeLink} />
-              <Route path="/fleetmetric/fleet/add" exact component={AddFleetLink} />
+              <Route path="/fleetmetric/" exact component={DashboardLink} />
+              <Route path="/fleetmetric/fleet/*" exact component={FleetRouter} />
             </Switch>
-          </div>
         </div>
       </div>
     );

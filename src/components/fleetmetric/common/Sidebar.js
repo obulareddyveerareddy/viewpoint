@@ -1,8 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const Sidebar = ({toggleSideBar, userProfile}) => {
-    console.log('~~~~~~~~~~~~~~~~~~~~~~>>> Sidebar <<<~~~~~~~~~~~~~~~~~~~~~~');
-    console.log(userProfile);
     return (
         <div id="sidebar-wrapper">
             <ul className="sidebar-nav mt-5 pt-3">
@@ -13,25 +12,19 @@ const Sidebar = ({toggleSideBar, userProfile}) => {
                     <h5 className="pt-2 sidebar-user-display-name">{userProfile.displayName ? userProfile.displayName : ''}</h5>
                 </li>
                 <li>
-                    <a href="#">Dashboard</a>
+                    <Link to="/fleetmetric/">Dashboard</Link>
                 </li>
                 <li>
-                    <a href="#">Shortcuts</a>
+                    <Link to="/fleetmetric/fleet/dashboard">Fleet</Link>
                 </li>
                 <li>
-                    <a href="#">Overview</a>
+                    <Link to="/fleetmetric/employees/dashboard">Employees</Link>
                 </li>
                 <li>
-                    <a href="#">Events</a>
+                    <Link to="/fleetmetric/services/dashboard">Services</Link>
                 </li>
                 <li>
                     <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
                 </li>
             </ul>
         </div>  
