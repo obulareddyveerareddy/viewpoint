@@ -1,11 +1,9 @@
 import { connect }          from 'react-redux';
-import * as homeActions     from './home/Actions';
+import * as fleetActions    from './FleetActions';
 import fleetMetricRouter    from './FleetMetricRouter';
 import fetch                from 'cross-fetch';
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('------------- FleetMetricLink <::::::> mapStateToProps ------------');
-  console.log(state);
   return {
     userProfile:state.userProfile
   }
@@ -13,18 +11,16 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getLoggedInUser:() =>{
+    getGoogleLogUserProfile:() =>{
       fetch('/api/auth/fleetmetric/user').then(function(response) {
-        console.log('---------------- /api/auth/fleetmetric/user :( ----------------');
         return response.json();
       })
       .then(function(responseAsJson) {
-        console.log(responseAsJson);
-        dispatch(homeActions.getGoogleLoggedUserProfile(responseAsJson));
+        dispatch(fleetActions.getGoogleLogUserProfile(responseAsJson));
       })
       .catch(function(err) {
         if(err){
-          console.log('---------------- Error :( ----------------');  
+          console.warn('---------------- Error :( ----------------');  
         }
       });
     }

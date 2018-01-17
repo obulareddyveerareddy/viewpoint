@@ -5,10 +5,33 @@ import './DashboardStyles.scss';
 class DashboardPage extends React.Component{
     
     constructor(props){
-        super(props);    
+        super(props);
+        this.state = {
+            userProfile: this.props.userProfile,
+            fleet:this.props.fleet
+        };
+        console.log('~~~~~~~~~~~~~~~~ constructor(.) > DashboardPage ~~~~~~~~~~~~~~~~');
+        console.log(this.props);  
+    }
+    
+    componentWillReceiveProps(nextProps) {
+        console.log('~~~~~~~~~~~~~~~~ componentWillReceiveProps() > DashboardPage ~~~~~~~~~~~~~~~~');
+        console.log(this.props);
+        console.log(this.state.userProfile);
+        console.log(nextProps);
+        this.setState({userProfile: nextProps.userProfile, fleet:nextProps.fleet});
+        if(Object.keys(this.state.fleet).length === 0){
+            console.log('------------ fetch fleet details ------------');
+            this.props.getLoggedInUserFleetsByGoogleId(nextProps.userProfile.id);               
+        }
+        
     }
     
     render(){
+        let {userProfile, fleet} = this.props;
+        console.log('~~~~~~~~~~~~~~~~~~~~ DashboardPage ~~~~~~~~~~~~~~~~~~~~');
+        console.log(userProfile);
+        console.log(fleet);
         return(
             <section className="content">
                 <div className="row">

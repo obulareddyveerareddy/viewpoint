@@ -5,7 +5,33 @@ import './../FleetRouter.scss';
 class FleetDashboardPage extends React.Component{
     
     constructor(props){
-        super(props);    
+        super(props);
+        this.state={
+            
+        }
+    }
+    
+    componentWillReceiveProps(nextProps){
+        console.log('~~~~~~~~~~~~~~~~~~ >>> FleetDashboardPage@componentWillReceiveProps(.) <<< ~~~~~~~~~~~~~~~~~~');
+        console.log(nextProps);
+        if(!this.state.userProfile){
+            this.setState({userProfile:nextProps.userProfile});
+            this.props.getLoggedInUserFleets(nextProps.userProfile);
+        }
+    }
+    
+    fillFleetsDetails(){
+        let numberOfFleets = 0;
+        for(let fleet in this.state.fleet){
+            numberOfFleets++;
+        }
+        if(numberOfFleets === 0){
+            return(<tr>
+                        <td colSpan="12" className="text-center">
+                            <small>No data found, Add new fleet</small>
+                        </td>
+                    </tr>);
+        }
     }
     
     render(){
@@ -40,11 +66,7 @@ class FleetDashboardPage extends React.Component{
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td colSpan="12" className="text-center">
-                                <small>No data found, Add new fleet</small>
-                            </td>
-                        </tr>
+                        {this.fillFleetsDetails.bind(this)}
                     </tbody>
                 </table>
                 </div>

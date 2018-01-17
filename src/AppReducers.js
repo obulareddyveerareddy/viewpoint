@@ -1,10 +1,9 @@
 import {combineReducers}    from 'redux';
-import auth         from './components/auth/login/Reducer';
-import userProfile  from './components/fleetmetric/home/Reducer';
-import fleetDetails from './components/fleetmetric/home/FleetReducer';
+import userProfile  from './components/fleetmetric/UserProfileReducer';
+import fleet        from './components/fleetmetric/fleet/FleetReducer';
 
 const rootReducer = combineReducers({
-auth, userProfile, fleetDetails
+    userProfile, fleet
 });
 
 export default rootReducer;

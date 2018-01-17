@@ -34,6 +34,8 @@ module.exports = function(app, instance){
   });
   
   app.use('/api/auth/fleetmetric/user', function(req, res){
+    console.log('~~~~~~~~~~~~~~~ >>> /api/auth/fleetmetric/user <<< ~~~~~~~~~~~~~~~');
+    console.log(req.user);
     res.send(req.user);
   });
 

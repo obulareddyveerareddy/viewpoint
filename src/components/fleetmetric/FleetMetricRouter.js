@@ -5,7 +5,6 @@ import './FleetMetricRouter.scss';
 
 import Nav            from './common/Nav';
 import Sidebar        from './common/Sidebar';
-import HomeLink       from './home/HomeLink';
 import DashboardLink  from './dashboard/DashboardLink';
 import FleetRouter    from './fleet/FleetRouter';
 
@@ -18,7 +17,7 @@ class PortfolioRouter extends React.Component{
   }
   
   componentWillMount(){
-    this.props.getLoggedInUser();
+    this.props.getGoogleLogUserProfile();
   }
   
   toggleSideBar(event){
@@ -28,9 +27,6 @@ class PortfolioRouter extends React.Component{
 
   render(){
     let dataSource = this.props.userProfile;
-    console.log('~~~~~~~~~~~~~~~~>>> FleetMetricRouter <<<~~~~~~~~~~~~~~~~');
-    console.log(this.props);
-    console.log(dataSource);
     return(
       <div id="wrapper" className="toggled">
         <Nav toggleSideBar={this.toggleSideBar}></Nav>
