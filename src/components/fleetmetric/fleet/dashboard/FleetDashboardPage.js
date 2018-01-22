@@ -1,40 +1,30 @@
 import React    from 'react';
 import {Link}   from 'react-router-dom';
-import './../FleetRouter.scss';
+import _        from 'lodash';
+import './FleetDashboardPage.scss';
 
 class FleetDashboardPage extends React.Component{
     
     constructor(props){
         super(props);
         this.state={
-            
-        }
-    }
-    
-    componentWillReceiveProps(nextProps){
-        console.log('~~~~~~~~~~~~~~~~~~ >>> FleetDashboardPage@componentWillReceiveProps(.) <<< ~~~~~~~~~~~~~~~~~~');
-        console.log(nextProps);
-        if(!this.state.userProfile){
-            this.setState({userProfile:nextProps.userProfile});
-            this.props.getLoggedInUserFleets(nextProps.userProfile);
-        }
-    }
-    
-    fillFleetsDetails(){
-        let numberOfFleets = 0;
-        for(let fleet in this.state.fleet){
-            numberOfFleets++;
-        }
-        if(numberOfFleets === 0){
-            return(<tr>
-                        <td colSpan="12" className="text-center">
-                            <small>No data found, Add new fleet</small>
-                        </td>
-                    </tr>);
+            userProfile: this.props.userProfile,
+            fleet:this.props.fleet
         }
     }
     
     render(){
+        let {userProfile, fleet} = this.props;
+        console.log('~~~~~~~~~~~~~~~~~~~~ FleetDashboardPage <===> render() ~~~~~~~~~~~~~~~~~~~~');
+        console.log(userProfile);
+        console.log(fleet);
+        
+        let fleetData = [];
+        _.mapKeys(fleet, (value, key) =>{
+            console.log(value);
+            fleetData.push(value);
+        });
+        console.log(fleetData);
         return(
             <section className="content-header d-flex flex-column">
                 <div className="d-flex justify-content-between">
@@ -61,12 +51,34 @@ class FleetDashboardPage extends React.Component{
                             <th>Odometer</th>
                             <th>Seat Capacity</th>
                             <th>Service.Date</th>
-                            <th>Complaints</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        {this.fillFleetsDetails.bind(this)}
+                        {
+                            (fleetData.length === 0)?
+                            <tr>
+                                <td colSpan="12" className="text-center">
+                                    <small>No data found, Add new fleet</small>
+                                </td>
+                            </tr>
+                            :
+                            fleetData.map(function (item, index) {
+                            return <tr key={index}>
+                                    <td>{index+1}</td>
+                                    <td>{item.ownerName}</td>
+                                    <td>{item.fleetManufacturer}</td>
+                                    <td>{item.fleetModal}</td>
+                                    <td>{item.regNumber}</td>
+                                    <td>{item.registeredDate}</td>
+                                    <td>{item.fuelType}</td>
+                                    <td>{item.odometerReading}</td>
+                                    <td>{item.seatCapacity}</td>
+                                    <td>{item.lastServiceDate}</td>
+                                    <td></td>
+                                </tr>;
+                            })
+                        }
                     </tbody>
                 </table>
                 </div>

@@ -1,7 +1,7 @@
-import React            from 'react';
-import {Link}           from 'react-router-dom';
-import FleetAddNewForm  from './FleetAddNewForm';
-import './../FleetRouter.scss';
+import React                from 'react';
+import {Link}               from 'react-router-dom';
+import FleetAddNewForm      from './FleetAddNewForm';
+import './FleetAddNewPage.scss';
 
 class FleetAddNewPage extends React.Component{
     
@@ -29,14 +29,6 @@ class FleetAddNewPage extends React.Component{
         this.onChangeListener = this.onChangeListener.bind(this);
     }
     
-    componentWillReceiveProps(nextProps){
-        console.log('~~~~~~~~~~~~~~~~~~ >>> componentWillReceiveProps(.) <<< ~~~~~~~~~~~~~~~~~~');
-        console.log(nextProps);
-        if(!this.state.userProfile){
-            this.setState({userProfile:nextProps.userProfile})
-        }
-    }
-    
     onChangeListener(event, key){
         let newFleet = this.state.newFleet;
         newFleet[key]= event.target.value;
@@ -47,9 +39,18 @@ class FleetAddNewPage extends React.Component{
     saveNewFleet(event){
         console.log('~~~~~~~~~~~~~~~~~ >>> saveNewFleet(.) <<< ~~~~~~~~~~~~~~~~~');
         console.log(JSON.stringify(this.state.newFleet));
+        this.props.saveNewFleet(this.state.newFleet);
         event.preventDefault();
-        console.log(this.state.userProfile);
-        this.props.saveNewFleet(this.state.newFleet, this.state.userProfile);
+    }
+    
+    componentWillReceiveProps(newPayload){
+        console.log('~~~~~~~~~~~~~ >>> FleetAddNewPage <::::> componentWillReceiveProps(.) ', newPayload);
+        if (newPayload.manageFleet){
+            if(newPayload.manageFleet.id){
+                const {history} = this.props;
+                history.push('/fleetmetric/fleet/dashboard');
+            }
+        }
     }
     
     render(){

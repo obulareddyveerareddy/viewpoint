@@ -3,8 +3,8 @@ import $        from 'jquery';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import './FleetMetricRouter.scss';
 
-import Nav            from './common/Nav';
-import Sidebar        from './common/Sidebar';
+import Nav            from './../common/Nav';
+import Sidebar        from './../common/Sidebar';
 import DashboardLink  from './dashboard/DashboardLink';
 import FleetRouter    from './fleet/FleetRouter';
 

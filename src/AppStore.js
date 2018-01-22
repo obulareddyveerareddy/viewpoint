@@ -1,11 +1,17 @@
-import {createStore, applyMiddleware} from 'redux';
-import thunk                          from 'redux-thunk';
-import rootReducers                   from './AppReducers';
+import {createStore, applyMiddleware}   from 'redux';
+import thunk                            from 'redux-thunk';
+import rootReducers                     from './AppReducers';
+import createSagaMiddleware             from 'redux-saga';
+import {initSagas}                      from './initSagas';
 
 export default function configureStore(initialState){
-    return createStore(
+    const sagaMiddleware = createSagaMiddleware()
+    const store          = createStore(
         rootReducers,
         initialState,
-        applyMiddleware(thunk)
+        applyMiddleware(sagaMiddleware)
     );
+    console.log("Saga middleware implemented.");
+    initSagas(sagaMiddleware);
+    return store;
 }
